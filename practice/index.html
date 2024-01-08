@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch API Test</title>
+</head>
+<body>
+    <button onclick="getData()">Fetch Data</button>
+
+    <script>
+        function getData() {
+            fetch('http://127.0.0.1:5000')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok.');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    console.log('Data received:', data);
+                    // Perform actions with the received data
+                })
+
+        }
+    </script>
+</body>
+</html>
