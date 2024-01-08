@@ -86,3 +86,20 @@ class TestFileStorage(unittest.TestCase):
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_save(self):
         """Test that save properly saves objects to file.json"""
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+    def test_get(self):
+        '''test get for database storage'''
+        user = User()
+        user.save()
+        user_get = models.storage.get(User, user.id)
+        self.assertIs(user, user_get)
+
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
+    def test_count(self):
+        '''test count for database storage'''
+        count = models.storage.count(User)
+        user = User()
+        user.save()
+        new_count = models.storage.count(User)
+        self.assertEqual(count + 1, new_count)
