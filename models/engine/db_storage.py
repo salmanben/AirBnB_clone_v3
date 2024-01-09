@@ -52,7 +52,10 @@ class DBStorage:
     def count(self, cls=None):
         '''Returns the number of objects in storage matching the given class.
         or the count of all objects in storage. otherwise'''
-        return len(self.all(cls))
+        data = self.all(cls)
+        if cls in classes.values():
+            data = self.all(cls)
+        return len(data)
 
     def all(self, cls=None):
         """query on the current database session"""
