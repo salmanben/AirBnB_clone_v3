@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""" objects that handle all default RestFul API actions for Places """
-from models.state import State
+""" objects that handle all default RestFul API places """
 from models.city import City
+from models.state import State
 from models.place import Place
 from models.user import User
 from models.amenity import Amenity
